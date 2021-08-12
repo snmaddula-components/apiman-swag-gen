@@ -1,0 +1,1119 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "API Explorer for ColorTokens Xshield Public APIs.",
+      "version": "1.0",
+      "title": "Xshield API Explorer",
+      "contact": {
+        "name": "ColorTokens Ltd",
+        "url": "https://colortokens.com/",
+        "email": "customer.support@colortokens.com"
+      }
+    },
+    "host": "<tenant>",
+    "basePath": "/public/api/v1",
+    "tags": [
+      {
+        "name": "Flows",
+        "description": ""
+      },
+      {
+        "name": "Policy",
+        "description": ""
+      },
+      {
+        "name": "Resources",
+        "description": ""
+      }
+    ],
+    "schemes": [
+      "https"
+    ],
+    "paths": {
+      "/{tenant}/analytics/flows": {
+        "get": {
+          "tags": [
+            "Flows"
+          ],
+          "summary": "Lists all flows within the specified time frame",
+          "operationId": "fetchAllUsingGET",
+          "produces": [
+            "*/*",
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "x-api-token",
+              "in": "header",
+              "description": "API Client token",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "tenant",
+              "in": "path",
+              "description": "Tenant Name",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "gte",
+              "in": "query",
+              "description": "Greater than or equal to the timestamp",
+              "required": true,
+              "type": "string",
+              "allowEmptyValue": false
+            },
+            {
+              "name": "lte",
+              "in": "query",
+              "description": "Lesser than or equal to the timestamp",
+              "required": true,
+              "type": "string",
+              "allowEmptyValue": false
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/FlowsResponse"
+              }
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/{tenant}/policy/managed-workload-groups": {
+        "get": {
+          "tags": [
+            "Policy"
+          ],
+          "summary": "List all managed workload groups",
+          "operationId": "getAllMWLGsUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "x-api-token",
+              "in": "header",
+              "description": "API Client token",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "tenant",
+              "in": "path",
+              "description": "Tenant Name",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ManagedWorkloadGroupsResponse"
+              }
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/{tenant}/policy/quarantine-templates": {
+        "get": {
+          "tags": [
+            "Policy"
+          ],
+          "summary": "List all quarantine templates",
+          "operationId": "getAllQuarantineTemplatesUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "x-api-token",
+              "in": "header",
+              "description": "API Client token",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "tenant",
+              "in": "path",
+              "description": "Tenant Name",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/QuarantineTemplatesResponse"
+              }
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/{tenant}/resources": {
+        "post": {
+          "tags": [
+            "Resources"
+          ],
+          "summary": "Get all resources",
+          "operationId": "getAllResourcesUsingGET",
+          "produces": [
+            "*/*",
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "x-api-token",
+              "in": "header",
+              "description": "API Client token",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "tenant",
+              "in": "path",
+              "description": "Tenant Name",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "in": "body",
+              "name": "payload",
+              "description": "payload",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ResourcesRequest"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Resource"
+                }
+              }
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/{tenant}/resources/{resource_id}/quarantine": {
+        "post": {
+          "tags": [
+            "Resources"
+          ],
+          "summary": "Quarantines a resource",
+          "operationId": "quarantineUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*",
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "x-api-token",
+              "in": "header",
+              "description": "API Client token",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "tenant",
+              "in": "path",
+              "description": "Tenant Name",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "resource_id",
+              "in": "path",
+              "description": "ID of the resource",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "in": "body",
+              "name": "payload",
+              "description": "payload",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/QuarantineRequest"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/{tenant}/resources/{resource_id}/unquarantine": {
+        "post": {
+          "tags": [
+            "Resources"
+          ],
+          "summary": "Restores a resource to its normal state",
+          "operationId": "unquarantineUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*",
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "x-api-token",
+              "in": "header",
+              "description": "API Client token",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "in": "body",
+              "name": "payload",
+              "description": "payload",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/QuarantineRequest"
+              }
+            },
+            {
+              "name": "resource_id",
+              "in": "path",
+              "description": "ID of the resource",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "tenant",
+              "in": "path",
+              "description": "Tenant Name",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/{tenant}/resources/{resource_id}/tags": {
+        "post": {
+          "tags": [
+            "Resources"
+          ],
+          "summary": "Tag Resource",
+          "operationId": "assignTagToResource",
+          "produces": [
+            "*/*",
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "x-api-token",
+              "in": "header",
+              "description": "API Client token",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "tenant",
+              "in": "path",
+              "description": "Tenant Name",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "resource_id",
+              "in": "path",
+              "description": "ID of the resource",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "in": "body",
+              "name": "payload",
+              "description": "payload",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/TagRequest"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          },
+          "deprecated": false
+        }
+      },
+      "/{tenant}/resources/{resource_id}/tags/{key}": {
+        "delete": {
+          "tags": [
+            "Resources"
+          ],
+          "summary": "Un-Tag Resource",
+          "operationId": "removeTagUsingDELETE",
+          "produces": [
+            "*/*",
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "x-api-token",
+              "in": "header",
+              "description": "API Client token",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "tenant",
+              "in": "path",
+              "description": "Tenant Name",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "resource_id",
+              "in": "path",
+              "description": "ID of the resource",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "key",
+              "in": "path",
+              "description": "Tag Key",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "value",
+              "in": "query",
+              "description": "Tag Value",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            }
+          },
+          "deprecated": false
+        }
+      }
+    },
+    "definitions": {
+      "Dns": {
+        "type": "object",
+        "properties": {
+          "autoConfigure": {
+            "type": "boolean"
+          }
+        },
+        "title": "Dns"
+      },
+      "Flow": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "actualupdateddate": {
+            "type": "string"
+          },
+          "createddate": {
+            "type": "string"
+          },
+          "cvss": {
+            "type": "string"
+          },
+          "dentities": {
+            "type": "string"
+          },
+          "departments": {
+            "type": "string"
+          },
+          "dgeo": {
+            "type": "string"
+          },
+          "dip": {
+            "type": "string"
+          },
+          "direction": {
+            "type": "string"
+          },
+          "dport": {
+            "type": "number",
+            "format": "float"
+          },
+          "dreputation": {
+            "type": "string"
+          },
+          "dtag": {
+            "type": "string"
+          },
+          "dthreat": {
+            "type": "string"
+          },
+          "duration": {
+            "type": "string"
+          },
+          "loginid": {
+            "type": "string"
+          },
+          "otherhost": {
+            "type": "string"
+          },
+          "process": {
+            "type": "string"
+          },
+          "protocol": {
+            "type": "string"
+          },
+          "resourceid": {
+            "type": "string"
+          },
+          "sentities": {
+            "type": "string"
+          },
+          "service": {
+            "type": "string"
+          },
+          "sessid": {
+            "type": "string"
+          },
+          "sgeo": {
+            "type": "string"
+          },
+          "sip": {
+            "type": "string"
+          },
+          "sourcePort": {
+            "type": "number",
+            "format": "float"
+          },
+          "srcHost": {
+            "type": "string"
+          },
+          "sreputation": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "sthreat": {
+            "type": "string"
+          },
+          "tag": {
+            "type": "string"
+          },
+          "totalbytesin": {
+            "type": "string"
+          },
+          "totalbytesout": {
+            "type": "string"
+          },
+          "totalpacketsin": {
+            "type": "string"
+          },
+          "totalpacketsout": {
+            "type": "number",
+            "format": "float"
+          },
+          "uniqcommid": {
+            "type": "string"
+          },
+          "updateddate": {
+            "type": "string"
+          },
+          "userid": {
+            "type": "string"
+          }
+        },
+        "title": "Flow"
+      },
+      "FlowsResponse": {
+        "type": "object",
+        "properties": {
+          "itemCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Flow"
+            }
+          },
+          "statusMessage": {
+            "type": "string"
+          }
+        },
+        "title": "FlowsResponse"
+      },
+      "Intfcs": {
+        "type": "object",
+        "properties": {
+          "ens160": {
+            "type": "string"
+          }
+        },
+        "title": "Intfcs"
+      },
+      "Lgm": {
+        "type": "object",
+        "properties": {
+          "lastUpdated": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        },
+        "title": "Lgm"
+      },
+      "ManagedWorkloadGroup": {
+        "type": "object",
+        "properties": {
+          "Group Last Modified Date": {
+            "type": "string"
+          },
+          "Modified by User": {
+            "type": "string"
+          },
+          "Policy Last Modified Date": {
+            "type": "string"
+          },
+          "_id": {
+            "type": "string"
+          },
+          "enforced": {
+            "type": "boolean"
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "policiesObject": {
+            "$ref": "#/definitions/Policies"
+          }
+        },
+        "title": "ManagedWorkloadGroup"
+      },
+      "ManagedWorkloadGroupsResponse": {
+        "type": "object",
+        "properties": {
+          "itemCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/ManagedWorkloadGroup"
+            }
+          },
+          "statusMessage": {
+            "type": "string"
+          }
+        },
+        "title": "ManagedWorkloadGroupsResponse"
+      },
+      "Modules": {
+        "type": "object",
+        "properties": {
+          "productUpdate": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "title": "Modules"
+      },
+      "Os": {
+        "type": "object",
+        "properties": {
+          "edition": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        },
+        "title": "Os"
+      },
+      "Osinfo": {
+        "type": "object",
+        "properties": {
+          "arch": {
+            "type": "string"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "major_version": {
+            "type": "string"
+          },
+          "minor_version": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "os_class": {
+            "type": "string"
+          },
+          "os_type": {
+            "type": "string"
+          },
+          "platform_specific": {
+            "$ref": "#/definitions/Platform_specific"
+          },
+          "version": {
+            "type": "string"
+          }
+        },
+        "title": "Osinfo"
+      },
+      "Platform_specific": {
+        "type": "object",
+        "properties": {
+          "domain_name": {
+            "type": "string"
+          },
+          "kernel_version": {
+            "type": "string"
+          },
+          "node_name": {
+            "type": "string"
+          },
+          "release": {
+            "type": "string"
+          }
+        },
+        "title": "Platform_specific"
+      },
+      "Policies": {
+        "type": "object",
+        "properties": {
+          "inbound": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "outbound": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "title": "Policies"
+      },
+      "Policy_delivery": {
+        "type": "object",
+        "properties": {
+          "last_updated_at": {
+            "type": "string"
+          },
+          "policy_version": {
+            "type": "number",
+            "format": "float"
+          },
+          "status": {
+            "type": "string"
+          },
+          "syncState": {
+            "type": "string"
+          }
+        },
+        "title": "Policy_delivery"
+      },
+      "Policy_details": {
+        "type": "object",
+        "properties": {
+          "policyTamperStatus": {
+            "type": "string"
+          },
+          "policy_delivery": {
+            "$ref": "#/definitions/Policy_delivery"
+          }
+        },
+        "title": "Policy_details"
+      },
+      "Policy_info": {
+        "type": "object",
+        "properties": {
+          "has_access_policy": {
+            "type": "boolean"
+          },
+          "is_diff_acl_empty": {
+            "type": "boolean"
+          },
+          "policy_version": {
+            "type": "number",
+            "format": "float"
+          },
+          "resource_state": {
+            "type": "string"
+          },
+          "state_dir": {
+            "$ref": "#/definitions/State_dir"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        },
+        "title": "Policy_info"
+      },
+      "QuarantineRequest": {
+        "type": "object",
+        "properties": {
+          "quarantine": {
+            "type": "boolean"
+          },
+          "quarantineTemplate": {
+            "type": "string"
+          }
+        },
+        "title": "QuarantineRequest"
+      },
+      "QuarantineTemplate": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "assetCount": {
+            "type": "number",
+            "format": "float"
+          },
+          "createdDate": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "lowerName": {
+            "type": "string"
+          },
+          "modifiedDate": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          }
+        },
+        "title": "QuarantineTemplate"
+      },
+      "ResourcesRequest": {
+        "type": "object",
+        "properties": {
+          "filters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/AssetFilter"
+            }
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "assetType": {
+                "type": "string",
+                "example": "workload"
+              }
+            }
+          },
+          "pagination": {
+            "type": "object",
+            "properties": {
+              "limit": {
+                "type": "number",
+                "example": 2
+              },
+              "startIndex": {
+                "type": "number",
+                "example": 1
+              }
+            }
+          }
+        },
+        "title": "ResourcesRequest"
+      },
+      "AssetFilter": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "example": "asset.tags"
+          },
+          "value": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "Application:OfficeLaptop"
+            }
+          },
+          "condition": {
+            "type": "string",
+            "example": "equal"
+          }
+        },
+        "title": "AssetFilter"
+      },
+      "QuarantineTemplatesResponse": {
+        "type": "object",
+        "properties": {
+          "itemCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/QuarantineTemplate"
+            }
+          },
+          "statusMessage": {
+            "type": "string"
+          }
+        },
+        "title": "QuarantineTemplatesResponse"
+      },
+      "RedirectConfig": {
+        "type": "object",
+        "title": "RedirectConfig"
+      },
+      "Resource": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "certificateSerialNumber": {
+            "type": "number",
+            "format": "float"
+          },
+          "cn": {
+            "type": "string"
+          },
+          "connectionType": {
+            "type": "string"
+          },
+          "cpuUsage": {
+            "type": "string"
+          },
+          "createdDate": {
+            "type": "string"
+          },
+          "ctBridgeStatus": {
+            "type": "string"
+          },
+          "dns": {
+            "$ref": "#/definitions/Dns"
+          },
+          "downloadLogStatus": {
+            "type": "string"
+          },
+          "edrProtectedStatus": {
+            "type": "string"
+          },
+          "edrSeverity": {
+            "type": "string"
+          },
+          "endpointType": {
+            "type": "string"
+          },
+          "hostname": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "infoOverride": {
+            "type": "boolean"
+          },
+          "intfcs": {
+            "$ref": "#/definitions/Intfcs"
+          },
+          "isAnyColorZoneDown": {
+            "type": "boolean"
+          },
+          "isColormaster": {
+            "type": "boolean"
+          },
+          "lastHeartbeatTime": {
+            "type": "string"
+          },
+          "lgm": {
+            "$ref": "#/definitions/Lgm"
+          },
+          "lifecycleState": {
+            "type": "string"
+          },
+          "localIp": {
+            "type": "string"
+          },
+          "localMacaddress": {
+            "type": "string"
+          },
+          "managementIP": {
+            "type": "string"
+          },
+          "memoryUsage": {
+            "type": "string"
+          },
+          "modules": {
+            "$ref": "#/definitions/Modules"
+          },
+          "name": {
+            "type": "string"
+          },
+          "newLgm": {
+            "type": "boolean"
+          },
+          "os": {
+            "$ref": "#/definitions/Os"
+          },
+          "osinfo": {
+            "$ref": "#/definitions/Osinfo"
+          },
+          "policy_details": {
+            "$ref": "#/definitions/Policy_details"
+          },
+          "policy_info": {
+            "$ref": "#/definitions/Policy_info"
+          },
+          "publicIp": {
+            "type": "string"
+          },
+          "quarantine": {
+            "type": "boolean"
+          },
+          "redirectConfig": {
+            "$ref": "#/definitions/RedirectConfig"
+          },
+          "resourceType": {
+            "type": "string"
+          },
+          "resource_id": {
+            "type": "number",
+            "format": "float"
+          },
+          "schemaVersion": {
+            "type": "number",
+            "format": "float"
+          },
+          "secured": {
+            "type": "boolean"
+          },
+          "status": {
+            "type": "string"
+          },
+          "systeminfo": {
+            "$ref": "#/definitions/Systeminfo"
+          },
+          "tenantId": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "title": "Resource"
+      },
+      "State_dir": {
+        "type": "object",
+        "properties": {
+          "inbound": {
+            "type": "boolean"
+          },
+          "outbound": {
+            "type": "boolean"
+          }
+        },
+        "title": "State_dir"
+      },
+      "Systeminfo": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string"
+          },
+          "ram_size_in_mb": {
+            "type": "number",
+            "format": "float"
+          },
+          "system_docker_id": {
+            "type": "string"
+          },
+          "system_serial_number": {
+            "type": "string"
+          },
+          "vendor": {
+            "type": "string"
+          }
+        },
+        "title": "Systeminfo"
+      },
+      "TagRequest": {
+        "type": "object",
+        "properties": {
+          "tag": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "title": "TagRequest"
+      }
+    }
+  }

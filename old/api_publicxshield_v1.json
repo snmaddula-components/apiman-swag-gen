@@ -1,0 +1,1927 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "This is a basic ms app for demo purpose",
+		"version": "1.0",
+		"title": "Basic MS App",
+		"contact": {
+			"name": "snmaddula",
+			"email": "sn_maddula@outlook.com"
+		}
+	},
+	"host": "localhost:9009",
+	"basePath": "/",
+	"tags": [{
+		"name": "access-params",
+		"description": "Access Params"
+	}, {
+		"name": "access-policies",
+		"description": "Access Policies"
+	}, {
+		"name": "audit",
+		"description": "Audit"
+	}, {
+		"name": "corporate-policy-templates",
+		"description": "Corporate Policy Templates"
+	}, {
+		"name": "domain-groups",
+		"description": "Domain Groups"
+	}, {
+		"name": "endpoint-groups",
+		"description": "Endpoint Groups"
+	}, {
+		"name": "network-groups",
+		"description": "Network Groups"
+	}, {
+		"name": "quarantine-policy-templates",
+		"description": "Quarantine Policy Templates"
+	}, {
+		"name": "security-policy-templates",
+		"description": "Security Policy Templates"
+	}, {
+		"name": "workload-groups",
+		"description": "Workload Groups"
+	}],
+	"paths": {
+		"/public/api/v1/{tenant}/audit/events": {
+			"get": {
+				"tags": ["audit"],
+				"summary": "listAuditEvents",
+				"operationId": "listAuditEventsUsingGET",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "from",
+					"in": "query",
+					"description": "from",
+					"required": false,
+					"type": "integer",
+					"format": "int64"
+				}, {
+					"name": "to",
+					"in": "query",
+					"description": "to",
+					"required": false,
+					"type": "integer",
+					"format": "int64"
+				}, {
+					"name": "limit",
+					"in": "query",
+					"description": "limit",
+					"required": false,
+					"type": "integer",
+					"format": "int64"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/AuditEventResponse"
+						}
+					}
+				}
+			}
+		},
+		"/public/api/v1/{tenant}/audit/types": {
+			"get": {
+				"tags": ["audit"],
+				"summary": "listAuditTypes",
+				"operationId": "listAuditTypesUsingGET",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/AuditCategoryResponse"
+						}
+					}
+				}
+			}
+		},
+		"/public/api/v1/{tenant}/policy/access-params": {
+			"get": {
+				"tags": ["access-params"],
+				"summary": "list",
+				"operationId": "listUsingGET",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "limit",
+					"in": "query",
+					"description": "limit",
+					"required": false,
+					"type": "integer",
+					"format": "int64"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			},
+			"post": {
+				"tags": ["access-params"],
+				"summary": "create",
+				"operationId": "createUsingPOST",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"in": "body",
+					"name": "payload",
+					"description": "payload",
+					"required": true,
+					"schema": {
+						"type": "object"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			},
+			"delete": {
+				"tags": ["access-params"],
+				"summary": "delete",
+				"operationId": "deleteUsingDELETE",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"in": "body",
+					"name": "ids",
+					"description": "ids",
+					"required": true,
+					"schema": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/public/api/v1/{tenant}/policy/access-params/{id}": {
+			"put": {
+				"tags": ["access-params"],
+				"summary": "update",
+				"operationId": "updateUsingPUT",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "id",
+					"in": "path",
+					"description": "id",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/public/api/v1/{tenant}/policy/access-policies": {
+			"get": {
+				"tags": ["access-policies"],
+				"summary": "list",
+				"operationId": "listUsingGET_1",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "limit",
+					"in": "query",
+					"description": "limit",
+					"required": false,
+					"type": "integer",
+					"format": "int64"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			},
+			"post": {
+				"tags": ["access-policies"],
+				"summary": "create",
+				"operationId": "createUsingPOST_1",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"in": "body",
+					"name": "payload",
+					"description": "payload",
+					"required": true,
+					"schema": {
+						"type": "object"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			},
+			"delete": {
+				"tags": ["access-policies"],
+				"summary": "delete",
+				"operationId": "deleteUsingDELETE_1",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"in": "body",
+					"name": "ids",
+					"description": "ids",
+					"required": true,
+					"schema": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/public/api/v1/{tenant}/policy/access-policies/{id}": {
+			"put": {
+				"tags": ["access-policies"],
+				"summary": "update",
+				"operationId": "updateUsingPUT_1",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "id",
+					"in": "path",
+					"description": "id",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/public/api/v1/{tenant}/policy/corporate-templates": {
+			"get": {
+				"tags": ["corporate-policy-templates"],
+				"summary": "list",
+				"operationId": "listUsingGET_2",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "limit",
+					"in": "query",
+					"description": "limit",
+					"required": false,
+					"type": "integer",
+					"format": "int64"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			},
+			"post": {
+				"tags": ["corporate-policy-templates"],
+				"summary": "create",
+				"operationId": "createUsingPOST_2",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"in": "body",
+					"name": "payload",
+					"description": "payload",
+					"required": true,
+					"schema": {
+						"type": "object"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			},
+			"delete": {
+				"tags": ["corporate-policy-templates"],
+				"summary": "delete",
+				"operationId": "deleteUsingDELETE_2",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"in": "body",
+					"name": "ids",
+					"description": "ids",
+					"required": true,
+					"schema": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/public/api/v1/{tenant}/policy/corporate-templates/{id}": {
+			"put": {
+				"tags": ["corporate-policy-templates"],
+				"summary": "update",
+				"operationId": "updateUsingPUT_2",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "id",
+					"in": "path",
+					"description": "id",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/public/api/v1/{tenant}/policy/domain-groups": {
+			"get": {
+				"tags": ["domain-groups"],
+				"summary": "list",
+				"operationId": "listUsingGET_3",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "limit",
+					"in": "query",
+					"description": "limit",
+					"required": false,
+					"type": "integer",
+					"format": "int64"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/DomainGroupListResponse"
+						}
+					}
+				}
+			},
+			"post": {
+				"tags": ["domain-groups"],
+				"summary": "create",
+				"operationId": "createUsingPOST_3",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"in": "body",
+					"name": "payload",
+					"description": "payload",
+					"required": true,
+					"schema": {
+						"type": "object"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			},
+			"delete": {
+				"tags": ["domain-groups"],
+				"summary": "delete",
+				"operationId": "deleteUsingDELETE_3",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"in": "body",
+					"name": "ids",
+					"description": "ids",
+					"required": true,
+					"schema": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/public/api/v1/{tenant}/policy/domain-groups/{id}": {
+			"put": {
+				"tags": ["domain-groups"],
+				"summary": "update",
+				"operationId": "updateUsingPUT_3",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "id",
+					"in": "path",
+					"description": "id",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/public/api/v1/{tenant}/policy/endpoint-groups": {
+			"get": {
+				"tags": ["endpoint-groups"],
+				"summary": "list",
+				"operationId": "listUsingGET_4",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "limit",
+					"in": "query",
+					"description": "limit",
+					"required": false,
+					"type": "integer",
+					"format": "int64"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/EndpointGroupListResponse"
+						}
+					}
+				}
+			},
+			"post": {
+				"tags": ["endpoint-groups"],
+				"summary": "create",
+				"operationId": "createUsingPOST_4",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"in": "body",
+					"name": "payload",
+					"description": "payload",
+					"required": true,
+					"schema": {
+						"type": "object"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			},
+			"delete": {
+				"tags": ["endpoint-groups"],
+				"summary": "delete",
+				"operationId": "deleteUsingDELETE_4",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"in": "body",
+					"name": "ids",
+					"description": "ids",
+					"required": true,
+					"schema": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/public/api/v1/{tenant}/policy/endpoint-groups/{id}": {
+			"put": {
+				"tags": ["endpoint-groups"],
+				"summary": "update",
+				"operationId": "updateUsingPUT_4",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "id",
+					"in": "path",
+					"description": "id",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/public/api/v1/{tenant}/policy/network-groups": {
+			"get": {
+				"tags": ["network-groups"],
+				"summary": "list",
+				"operationId": "listUsingGET_5",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "limit",
+					"in": "query",
+					"description": "limit",
+					"required": false,
+					"type": "integer",
+					"format": "int64"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/NetworkGroupListResponse"
+						}
+					}
+				}
+			},
+			"post": {
+				"tags": ["network-groups"],
+				"summary": "create",
+				"operationId": "createUsingPOST_5",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"in": "body",
+					"name": "payload",
+					"description": "payload",
+					"required": true,
+					"schema": {
+						"type": "object"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			},
+			"delete": {
+				"tags": ["network-groups"],
+				"summary": "delete",
+				"operationId": "deleteUsingDELETE_5",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"in": "body",
+					"name": "ids",
+					"description": "ids",
+					"required": true,
+					"schema": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/public/api/v1/{tenant}/policy/network-groups/{id}": {
+			"put": {
+				"tags": ["network-groups"],
+				"summary": "update",
+				"operationId": "updateUsingPUT_5",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "id",
+					"in": "path",
+					"description": "id",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/public/api/v1/{tenant}/policy/quarantine-templates": {
+			"get": {
+				"tags": ["quarantine-policy-templates"],
+				"summary": "list",
+				"operationId": "listUsingGET_6",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "limit",
+					"in": "query",
+					"description": "limit",
+					"required": false,
+					"type": "integer",
+					"format": "int64"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			},
+			"post": {
+				"tags": ["quarantine-policy-templates"],
+				"summary": "create",
+				"operationId": "createUsingPOST_6",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"in": "body",
+					"name": "payload",
+					"description": "payload",
+					"required": true,
+					"schema": {
+						"type": "object"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			},
+			"delete": {
+				"tags": ["quarantine-policy-templates"],
+				"summary": "delete",
+				"operationId": "deleteUsingDELETE_6",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"in": "body",
+					"name": "ids",
+					"description": "ids",
+					"required": true,
+					"schema": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/public/api/v1/{tenant}/policy/quarantine-templates/{id}": {
+			"put": {
+				"tags": ["quarantine-policy-templates"],
+				"summary": "update",
+				"operationId": "updateUsingPUT_6",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "id",
+					"in": "path",
+					"description": "id",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/public/api/v1/{tenant}/policy/security-templates": {
+			"get": {
+				"tags": ["security-policy-templates"],
+				"summary": "list",
+				"operationId": "listUsingGET_7",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "limit",
+					"in": "query",
+					"description": "limit",
+					"required": false,
+					"type": "integer",
+					"format": "int64"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			},
+			"post": {
+				"tags": ["security-policy-templates"],
+				"summary": "create",
+				"operationId": "createUsingPOST_7",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"in": "body",
+					"name": "payload",
+					"description": "payload",
+					"required": true,
+					"schema": {
+						"type": "object"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			},
+			"delete": {
+				"tags": ["security-policy-templates"],
+				"summary": "delete",
+				"operationId": "deleteUsingDELETE_7",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"in": "body",
+					"name": "ids",
+					"description": "ids",
+					"required": true,
+					"schema": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/public/api/v1/{tenant}/policy/security-templates/{id}": {
+			"put": {
+				"tags": ["security-policy-templates"],
+				"summary": "update",
+				"operationId": "updateUsingPUT_7",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "id",
+					"in": "path",
+					"description": "id",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/public/api/v1/{tenant}/policy/workload-groups": {
+			"get": {
+				"tags": ["workload-groups"],
+				"summary": "list",
+				"operationId": "listUsingGET_8",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "limit",
+					"in": "query",
+					"description": "limit",
+					"required": false,
+					"type": "integer",
+					"format": "int64"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/WorkloadGroupListResponse"
+						}
+					}
+				}
+			},
+			"post": {
+				"tags": ["workload-groups"],
+				"summary": "create",
+				"operationId": "createUsingPOST_8",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"in": "body",
+					"name": "payload",
+					"description": "payload",
+					"required": true,
+					"schema": {
+						"type": "object"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			},
+			"delete": {
+				"tags": ["workload-groups"],
+				"summary": "delete",
+				"operationId": "deleteUsingDELETE_8",
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"in": "body",
+					"name": "ids",
+					"description": "ids",
+					"required": true,
+					"schema": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		},
+		"/public/api/v1/{tenant}/policy/workload-groups/{id}": {
+			"put": {
+				"tags": ["workload-groups"],
+				"summary": "update",
+				"operationId": "updateUsingPUT_8",
+				"consumes": ["application/json"],
+				"produces": ["*/*"],
+				"parameters": [{
+					"name": "tenant",
+					"in": "path",
+					"description": "tenant",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "x-api-token",
+					"in": "header",
+					"description": "x-api-token",
+					"required": true,
+					"type": "string"
+				}, {
+					"name": "id",
+					"in": "path",
+					"description": "id",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"ALL": {
+			"type": "object",
+			"properties": {
+				"access_policy_count": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"derived_group_id": {
+					"type": "string"
+				}
+			},
+			"title": "ALL"
+		},
+		"AuditCategoryResponse": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"pagination": {
+					"$ref": "#/definitions/Pagination"
+				},
+				"status": {
+					"$ref": "#/definitions/Status"
+				},
+				"statusCode": {
+					"type": "integer",
+					"format": "int32"
+				}
+			},
+			"title": "AuditCategoryResponse"
+		},
+		"AuditEvent": {
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"actionLabel": {
+					"type": "string"
+				},
+				"message": {
+					"type": "string"
+				},
+				"meta": {
+					"$ref": "#/definitions/Meta"
+				},
+				"timestamp": {
+					"type": "string",
+					"format": "date-time"
+				}
+			},
+			"title": "AuditEvent"
+		},
+		"AuditEventResponse": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/AuditEvent"
+					}
+				},
+				"pagination": {
+					"$ref": "#/definitions/Pagination"
+				},
+				"status": {
+					"$ref": "#/definitions/Status"
+				},
+				"statusCode": {
+					"type": "integer",
+					"format": "int32"
+				}
+			},
+			"title": "AuditEventResponse"
+		},
+		"DomainGroup": {
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"createdDate": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"filters": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Filter"
+					}
+				},
+				"group_type": {
+					"type": "string"
+				},
+				"has_permission": {
+					"type": "boolean"
+				},
+				"name": {
+					"type": "string"
+				},
+				"role": {
+					"type": "string"
+				},
+				"roles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"state": {
+					"type": "string"
+				},
+				"status": {
+					"type": "string"
+				},
+				"tenantId": {
+					"type": "string"
+				}
+			},
+			"title": "DomainGroup"
+		},
+		"DomainGroupListResponse": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/DomainGroup"
+					}
+				},
+				"pagination": {
+					"$ref": "#/definitions/Pagination"
+				},
+				"status": {
+					"$ref": "#/definitions/Status"
+				}
+			},
+			"title": "DomainGroupListResponse"
+		},
+		"EndpointGroup": {
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"assigned_policy_count": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"auto_quarantine_template_id_list": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					}
+				},
+				"corporatePolicies": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					}
+				},
+				"createdDate": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"filters": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Filter"
+					}
+				},
+				"group_type": {
+					"type": "string"
+				},
+				"has_permission": {
+					"type": "boolean"
+				},
+				"modifiedDate": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"remote_resources": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					}
+				},
+				"resources": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					}
+				},
+				"roles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"securityPolicyTemplates": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					}
+				},
+				"state": {
+					"type": "string"
+				},
+				"status": {
+					"type": "string"
+				},
+				"tenantId": {
+					"type": "string"
+				},
+				"user_departments": {
+					"$ref": "#/definitions/UserDepartments"
+				},
+				"user_groups": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/UserGroup"
+					}
+				},
+				"username": {
+					"type": "string"
+				}
+			},
+			"title": "EndpointGroup"
+		},
+		"EndpointGroupListResponse": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/EndpointGroup"
+					}
+				},
+				"pagination": {
+					"$ref": "#/definitions/Pagination"
+				},
+				"status": {
+					"$ref": "#/definitions/Status"
+				}
+			},
+			"title": "EndpointGroupListResponse"
+		},
+		"Filter": {
+			"type": "object",
+			"properties": {
+				"attribute_name": {
+					"type": "string"
+				},
+				"attribute_value": {
+					"type": "string"
+				},
+				"exclude": {
+					"type": "boolean"
+				},
+				"hasDuplicate": {
+					"type": "boolean"
+				},
+				"invalid": {
+					"type": "boolean"
+				},
+				"selected": {
+					"type": "boolean"
+				}
+			},
+			"title": "Filter"
+		},
+		"MapCptRuleIds": {
+			"type": "object",
+			"title": "MapCptRuleIds"
+		},
+		"Meta": {
+			"type": "object",
+			"properties": {
+				"action": {
+					"type": "string"
+				},
+				"tenant": {
+					"type": "string"
+				}
+			},
+			"title": "Meta"
+		},
+		"NetworkGroup": {
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"allowRemoteAccess": {
+					"type": "boolean"
+				},
+				"createdDate": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"enable_dnat": {
+					"type": "boolean"
+				},
+				"filters": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Filter"
+					}
+				},
+				"group_type": {
+					"type": "string"
+				},
+				"has_permission": {
+					"type": "boolean"
+				},
+				"name": {
+					"type": "string"
+				},
+				"network_type": {
+					"type": "string"
+				},
+				"role": {
+					"type": "string"
+				},
+				"roles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"state": {
+					"type": "string"
+				},
+				"status": {
+					"type": "string"
+				},
+				"tenantId": {
+					"type": "string"
+				},
+				"username": {
+					"type": "string"
+				}
+			},
+			"title": "NetworkGroup"
+		},
+		"NetworkGroupListResponse": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/NetworkGroup"
+					}
+				},
+				"pagination": {
+					"$ref": "#/definitions/Pagination"
+				},
+				"status": {
+					"$ref": "#/definitions/Status"
+				}
+			},
+			"title": "NetworkGroupListResponse"
+		},
+		"Pagination": {
+			"type": "object",
+			"properties": {
+				"limit": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"sort": {
+					"$ref": "#/definitions/Sort"
+				},
+				"startIndex": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"total": {
+					"type": "integer",
+					"format": "int32"
+				}
+			},
+			"title": "Pagination"
+		},
+		"RolesToGroupsMap": {
+			"type": "object",
+			"properties": {
+				"ALL": {
+					"$ref": "#/definitions/ALL"
+				}
+			},
+			"title": "RolesToGroupsMap"
+		},
+		"Sort": {
+			"type": "object",
+			"title": "Sort"
+		},
+		"StateDir": {
+			"type": "object",
+			"properties": {
+				"Inbound": {
+					"type": "boolean"
+				},
+				"Outbound": {
+					"type": "boolean"
+				}
+			},
+			"title": "StateDir"
+		},
+		"Status": {
+			"type": "object",
+			"properties": {
+				"message": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string"
+				}
+			},
+			"title": "Status"
+		},
+		"UserDepartments": {
+			"type": "object",
+			"properties": {
+				"departments": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					}
+				},
+				"exclude": {
+					"type": "boolean"
+				}
+			},
+			"title": "UserDepartments"
+		},
+		"UserGroup": {
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"exclude": {
+					"type": "boolean"
+				},
+				"name": {
+					"type": "string"
+				},
+				"source": {
+					"type": "string"
+				}
+			},
+			"title": "UserGroup"
+		},
+		"WorkloadGroup": {
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "string"
+				},
+				"allowRemoteAccess": {
+					"type": "boolean"
+				},
+				"assigned_policy_count": {
+					"type": "integer",
+					"format": "int32"
+				},
+				"corporatePolicies": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					}
+				},
+				"corporatePolicyTemplates": {
+					"type": "boolean"
+				},
+				"createdDate": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"enable_dnat": {
+					"type": "boolean"
+				},
+				"filters": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Filter"
+					}
+				},
+				"group_type": {
+					"type": "string"
+				},
+				"has_permission": {
+					"type": "boolean"
+				},
+				"map_cpt_rule_ids": {
+					"$ref": "#/definitions/MapCptRuleIds"
+				},
+				"modifiedDate": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"resources": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					}
+				},
+				"roles": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"roles_to_groups_map": {
+					"$ref": "#/definitions/RolesToGroupsMap"
+				},
+				"securityPolicyTemplates": {
+					"type": "array",
+					"items": {
+						"type": "object"
+					}
+				},
+				"spt_based_roles": {
+					"type": "boolean"
+				},
+				"state": {
+					"type": "string"
+				},
+				"state_change_date": {
+					"type": "string"
+				},
+				"state_dir": {
+					"$ref": "#/definitions/StateDir"
+				},
+				"status": {
+					"type": "string"
+				},
+				"tenantId": {
+					"type": "string"
+				},
+				"username": {
+					"type": "string"
+				}
+			},
+			"title": "WorkloadGroup"
+		},
+		"WorkloadGroupListResponse": {
+			"type": "object",
+			"properties": {
+				"data": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/WorkloadGroup"
+					}
+				},
+				"pagination": {
+					"$ref": "#/definitions/Pagination"
+				},
+				"status": {
+					"$ref": "#/definitions/Status"
+				}
+			},
+			"title": "WorkloadGroupListResponse"
+		}
+	}
+}
