@@ -1,13 +1,13 @@
 {
 	"swagger": "2.0",
 	"info": {
-		"description": "API Explorer for ColorTokens Xshield Public APIs.",
+		"description": "",
 		"version": "1.0",
-		"title": "Xshield API Explorer",
+		"title": "",
 		"contact": {
-			"name": "ColorTokens Ltd",
-			"url": "https://colortokens.com/",
-			"email": "customer.support@colortokens.com"
+			"name": "",
+			"url": "",
+			"email": ""
 		}
 	},
 	"host": "<tenant>",
