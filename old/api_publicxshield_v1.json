@@ -11,78 +11,99 @@
 	},
 	"host": "localhost:9009",
 	"basePath": "/",
-	"tags": [{
-		"name": "access-params",
-		"description": "Access Params"
-	}, {
-		"name": "access-policies",
-		"description": "Access Policies"
-	}, {
-		"name": "audit",
-		"description": "Audit"
-	}, {
-		"name": "corporate-policy-templates",
-		"description": "Corporate Policy Templates"
-	}, {
-		"name": "domain-groups",
-		"description": "Domain Groups"
-	}, {
-		"name": "endpoint-groups",
-		"description": "Endpoint Groups"
-	}, {
-		"name": "network-groups",
-		"description": "Network Groups"
-	}, {
-		"name": "quarantine-policy-templates",
-		"description": "Quarantine Policy Templates"
-	}, {
-		"name": "security-policy-templates",
-		"description": "Security Policy Templates"
-	}, {
-		"name": "workload-groups",
-		"description": "Workload Groups"
-	}],
+	"tags": [
+		{
+			"name": "access-params",
+			"description": "Access Params"
+		},
+		{
+			"name": "access-policies",
+			"description": "Access Policies"
+		},
+		{
+			"name": "audit",
+			"description": "Audit"
+		},
+		{
+			"name": "corporate-policy-templates",
+			"description": "Corporate Policy Templates"
+		},
+		{
+			"name": "domain-groups",
+			"description": "Domain Groups"
+		},
+		{
+			"name": "endpoint-groups",
+			"description": "Endpoint Groups"
+		},
+		{
+			"name": "network-groups",
+			"description": "Network Groups"
+		},
+		{
+			"name": "quarantine-policy-templates",
+			"description": "Quarantine Policy Templates"
+		},
+		{
+			"name": "security-policy-templates",
+			"description": "Security Policy Templates"
+		},
+		{
+			"name": "workload-groups",
+			"description": "Workload Groups"
+		}
+	],
 	"paths": {
 		"/public/api/v1/{tenant}/audit/events": {
 			"get": {
-				"tags": ["audit"],
+				"tags": [
+					"audit"
+				],
 				"summary": "listAuditEvents",
 				"operationId": "listAuditEventsUsingGET",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "from",
-					"in": "query",
-					"description": "from",
-					"required": false,
-					"type": "integer",
-					"format": "int64"
-				}, {
-					"name": "to",
-					"in": "query",
-					"description": "to",
-					"required": false,
-					"type": "integer",
-					"format": "int64"
-				}, {
-					"name": "limit",
-					"in": "query",
-					"description": "limit",
-					"required": false,
-					"type": "integer",
-					"format": "int64"
-				}],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "from",
+						"in": "query",
+						"description": "from",
+						"required": false,
+						"type": "integer",
+						"format": "int64"
+					},
+					{
+						"name": "to",
+						"in": "query",
+						"description": "to",
+						"required": false,
+						"type": "integer",
+						"format": "int64"
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "limit",
+						"required": false,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK",
@@ -95,23 +116,30 @@
 		},
 		"/public/api/v1/{tenant}/audit/types": {
 			"get": {
-				"tags": ["audit"],
+				"tags": [
+					"audit"
+				],
 				"summary": "listAuditTypes",
 				"operationId": "listAuditTypesUsingGET",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK",
@@ -124,30 +152,38 @@
 		},
 		"/public/api/v1/{tenant}/policy/access-params": {
 			"get": {
-				"tags": ["access-params"],
+				"tags": [
+					"access-params"
+				],
 				"summary": "list",
 				"operationId": "listUsingGET",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "limit",
-					"in": "query",
-					"description": "limit",
-					"required": false,
-					"type": "integer",
-					"format": "int64"
-				}],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "limit",
+						"required": false,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -155,32 +191,42 @@
 				}
 			},
 			"post": {
-				"tags": ["access-params"],
+				"tags": [
+					"access-params"
+				],
 				"summary": "create",
 				"operationId": "createUsingPOST",
-				"consumes": ["application/json"],
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"in": "body",
-					"name": "payload",
-					"description": "payload",
-					"required": true,
-					"schema": {
-						"type": "object"
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "payload",
+						"description": "payload",
+						"required": true,
+						"schema": {
+							"type": "object"
+						}
 					}
-				}],
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -188,34 +234,42 @@
 				}
 			},
 			"delete": {
-				"tags": ["access-params"],
+				"tags": [
+					"access-params"
+				],
 				"summary": "delete",
 				"operationId": "deleteUsingDELETE",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"in": "body",
-					"name": "ids",
-					"description": "ids",
-					"required": true,
-					"schema": {
-						"type": "array",
-						"items": {
-							"type": "string"
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "ids",
+						"description": "ids",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
 						}
 					}
-				}],
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -225,30 +279,40 @@
 		},
 		"/public/api/v1/{tenant}/policy/access-params/{id}": {
 			"put": {
-				"tags": ["access-params"],
+				"tags": [
+					"access-params"
+				],
 				"summary": "update",
 				"operationId": "updateUsingPUT",
-				"consumes": ["application/json"],
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "id",
-					"in": "path",
-					"description": "id",
-					"required": true,
-					"type": "string"
-				}],
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "id",
+						"in": "path",
+						"description": "id",
+						"required": true,
+						"type": "string"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -258,30 +322,38 @@
 		},
 		"/public/api/v1/{tenant}/policy/access-policies": {
 			"get": {
-				"tags": ["access-policies"],
+				"tags": [
+					"access-policies"
+				],
 				"summary": "list",
 				"operationId": "listUsingGET_1",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "limit",
-					"in": "query",
-					"description": "limit",
-					"required": false,
-					"type": "integer",
-					"format": "int64"
-				}],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "limit",
+						"required": false,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -289,32 +361,42 @@
 				}
 			},
 			"post": {
-				"tags": ["access-policies"],
+				"tags": [
+					"access-policies"
+				],
 				"summary": "create",
 				"operationId": "createUsingPOST_1",
-				"consumes": ["application/json"],
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"in": "body",
-					"name": "payload",
-					"description": "payload",
-					"required": true,
-					"schema": {
-						"type": "object"
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "payload",
+						"description": "payload",
+						"required": true,
+						"schema": {
+							"type": "object"
+						}
 					}
-				}],
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -322,34 +404,42 @@
 				}
 			},
 			"delete": {
-				"tags": ["access-policies"],
+				"tags": [
+					"access-policies"
+				],
 				"summary": "delete",
 				"operationId": "deleteUsingDELETE_1",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"in": "body",
-					"name": "ids",
-					"description": "ids",
-					"required": true,
-					"schema": {
-						"type": "array",
-						"items": {
-							"type": "string"
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "ids",
+						"description": "ids",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
 						}
 					}
-				}],
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -359,30 +449,40 @@
 		},
 		"/public/api/v1/{tenant}/policy/access-policies/{id}": {
 			"put": {
-				"tags": ["access-policies"],
+				"tags": [
+					"access-policies"
+				],
 				"summary": "update",
 				"operationId": "updateUsingPUT_1",
-				"consumes": ["application/json"],
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "id",
-					"in": "path",
-					"description": "id",
-					"required": true,
-					"type": "string"
-				}],
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "id",
+						"in": "path",
+						"description": "id",
+						"required": true,
+						"type": "string"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -392,30 +492,38 @@
 		},
 		"/public/api/v1/{tenant}/policy/corporate-templates": {
 			"get": {
-				"tags": ["corporate-policy-templates"],
+				"tags": [
+					"corporate-policy-templates"
+				],
 				"summary": "list",
 				"operationId": "listUsingGET_2",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "limit",
-					"in": "query",
-					"description": "limit",
-					"required": false,
-					"type": "integer",
-					"format": "int64"
-				}],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "limit",
+						"required": false,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -423,32 +531,42 @@
 				}
 			},
 			"post": {
-				"tags": ["corporate-policy-templates"],
+				"tags": [
+					"corporate-policy-templates"
+				],
 				"summary": "create",
 				"operationId": "createUsingPOST_2",
-				"consumes": ["application/json"],
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"in": "body",
-					"name": "payload",
-					"description": "payload",
-					"required": true,
-					"schema": {
-						"type": "object"
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "payload",
+						"description": "payload",
+						"required": true,
+						"schema": {
+							"type": "object"
+						}
 					}
-				}],
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -456,34 +574,42 @@
 				}
 			},
 			"delete": {
-				"tags": ["corporate-policy-templates"],
+				"tags": [
+					"corporate-policy-templates"
+				],
 				"summary": "delete",
 				"operationId": "deleteUsingDELETE_2",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"in": "body",
-					"name": "ids",
-					"description": "ids",
-					"required": true,
-					"schema": {
-						"type": "array",
-						"items": {
-							"type": "string"
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "ids",
+						"description": "ids",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
 						}
 					}
-				}],
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -493,30 +619,40 @@
 		},
 		"/public/api/v1/{tenant}/policy/corporate-templates/{id}": {
 			"put": {
-				"tags": ["corporate-policy-templates"],
+				"tags": [
+					"corporate-policy-templates"
+				],
 				"summary": "update",
 				"operationId": "updateUsingPUT_2",
-				"consumes": ["application/json"],
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "id",
-					"in": "path",
-					"description": "id",
-					"required": true,
-					"type": "string"
-				}],
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "id",
+						"in": "path",
+						"description": "id",
+						"required": true,
+						"type": "string"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -526,30 +662,38 @@
 		},
 		"/public/api/v1/{tenant}/policy/domain-groups": {
 			"get": {
-				"tags": ["domain-groups"],
+				"tags": [
+					"domain-groups"
+				],
 				"summary": "list",
 				"operationId": "listUsingGET_3",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "limit",
-					"in": "query",
-					"description": "limit",
-					"required": false,
-					"type": "integer",
-					"format": "int64"
-				}],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "limit",
+						"required": false,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK",
@@ -560,32 +704,42 @@
 				}
 			},
 			"post": {
-				"tags": ["domain-groups"],
+				"tags": [
+					"domain-groups"
+				],
 				"summary": "create",
 				"operationId": "createUsingPOST_3",
-				"consumes": ["application/json"],
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"in": "body",
-					"name": "payload",
-					"description": "payload",
-					"required": true,
-					"schema": {
-						"type": "object"
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "payload",
+						"description": "payload",
+						"required": true,
+						"schema": {
+							"type": "object"
+						}
 					}
-				}],
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -593,34 +747,42 @@
 				}
 			},
 			"delete": {
-				"tags": ["domain-groups"],
+				"tags": [
+					"domain-groups"
+				],
 				"summary": "delete",
 				"operationId": "deleteUsingDELETE_3",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"in": "body",
-					"name": "ids",
-					"description": "ids",
-					"required": true,
-					"schema": {
-						"type": "array",
-						"items": {
-							"type": "string"
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "ids",
+						"description": "ids",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
 						}
 					}
-				}],
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -630,30 +792,40 @@
 		},
 		"/public/api/v1/{tenant}/policy/domain-groups/{id}": {
 			"put": {
-				"tags": ["domain-groups"],
+				"tags": [
+					"domain-groups"
+				],
 				"summary": "update",
 				"operationId": "updateUsingPUT_3",
-				"consumes": ["application/json"],
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "id",
-					"in": "path",
-					"description": "id",
-					"required": true,
-					"type": "string"
-				}],
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "id",
+						"in": "path",
+						"description": "id",
+						"required": true,
+						"type": "string"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -663,30 +835,38 @@
 		},
 		"/public/api/v1/{tenant}/policy/endpoint-groups": {
 			"get": {
-				"tags": ["endpoint-groups"],
+				"tags": [
+					"endpoint-groups"
+				],
 				"summary": "list",
 				"operationId": "listUsingGET_4",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "limit",
-					"in": "query",
-					"description": "limit",
-					"required": false,
-					"type": "integer",
-					"format": "int64"
-				}],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "limit",
+						"required": false,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK",
@@ -697,32 +877,42 @@
 				}
 			},
 			"post": {
-				"tags": ["endpoint-groups"],
+				"tags": [
+					"endpoint-groups"
+				],
 				"summary": "create",
 				"operationId": "createUsingPOST_4",
-				"consumes": ["application/json"],
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"in": "body",
-					"name": "payload",
-					"description": "payload",
-					"required": true,
-					"schema": {
-						"type": "object"
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "payload",
+						"description": "payload",
+						"required": true,
+						"schema": {
+							"type": "object"
+						}
 					}
-				}],
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -730,34 +920,42 @@
 				}
 			},
 			"delete": {
-				"tags": ["endpoint-groups"],
+				"tags": [
+					"endpoint-groups"
+				],
 				"summary": "delete",
 				"operationId": "deleteUsingDELETE_4",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"in": "body",
-					"name": "ids",
-					"description": "ids",
-					"required": true,
-					"schema": {
-						"type": "array",
-						"items": {
-							"type": "string"
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "ids",
+						"description": "ids",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
 						}
 					}
-				}],
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -767,30 +965,40 @@
 		},
 		"/public/api/v1/{tenant}/policy/endpoint-groups/{id}": {
 			"put": {
-				"tags": ["endpoint-groups"],
+				"tags": [
+					"endpoint-groups"
+				],
 				"summary": "update",
 				"operationId": "updateUsingPUT_4",
-				"consumes": ["application/json"],
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "id",
-					"in": "path",
-					"description": "id",
-					"required": true,
-					"type": "string"
-				}],
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "id",
+						"in": "path",
+						"description": "id",
+						"required": true,
+						"type": "string"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -800,30 +1008,38 @@
 		},
 		"/public/api/v1/{tenant}/policy/network-groups": {
 			"get": {
-				"tags": ["network-groups"],
+				"tags": [
+					"network-groups"
+				],
 				"summary": "list",
 				"operationId": "listUsingGET_5",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "limit",
-					"in": "query",
-					"description": "limit",
-					"required": false,
-					"type": "integer",
-					"format": "int64"
-				}],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "limit",
+						"required": false,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK",
@@ -834,32 +1050,42 @@
 				}
 			},
 			"post": {
-				"tags": ["network-groups"],
+				"tags": [
+					"network-groups"
+				],
 				"summary": "create",
 				"operationId": "createUsingPOST_5",
-				"consumes": ["application/json"],
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"in": "body",
-					"name": "payload",
-					"description": "payload",
-					"required": true,
-					"schema": {
-						"type": "object"
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "payload",
+						"description": "payload",
+						"required": true,
+						"schema": {
+							"type": "object"
+						}
 					}
-				}],
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -867,34 +1093,42 @@
 				}
 			},
 			"delete": {
-				"tags": ["network-groups"],
+				"tags": [
+					"network-groups"
+				],
 				"summary": "delete",
 				"operationId": "deleteUsingDELETE_5",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"in": "body",
-					"name": "ids",
-					"description": "ids",
-					"required": true,
-					"schema": {
-						"type": "array",
-						"items": {
-							"type": "string"
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "ids",
+						"description": "ids",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
 						}
 					}
-				}],
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -904,30 +1138,40 @@
 		},
 		"/public/api/v1/{tenant}/policy/network-groups/{id}": {
 			"put": {
-				"tags": ["network-groups"],
+				"tags": [
+					"network-groups"
+				],
 				"summary": "update",
 				"operationId": "updateUsingPUT_5",
-				"consumes": ["application/json"],
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "id",
-					"in": "path",
-					"description": "id",
-					"required": true,
-					"type": "string"
-				}],
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "id",
+						"in": "path",
+						"description": "id",
+						"required": true,
+						"type": "string"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -937,30 +1181,38 @@
 		},
 		"/public/api/v1/{tenant}/policy/quarantine-templates": {
 			"get": {
-				"tags": ["quarantine-policy-templates"],
+				"tags": [
+					"quarantine-policy-templates"
+				],
 				"summary": "list",
 				"operationId": "listUsingGET_6",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "limit",
-					"in": "query",
-					"description": "limit",
-					"required": false,
-					"type": "integer",
-					"format": "int64"
-				}],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "limit",
+						"required": false,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -968,32 +1220,42 @@
 				}
 			},
 			"post": {
-				"tags": ["quarantine-policy-templates"],
+				"tags": [
+					"quarantine-policy-templates"
+				],
 				"summary": "create",
 				"operationId": "createUsingPOST_6",
-				"consumes": ["application/json"],
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"in": "body",
-					"name": "payload",
-					"description": "payload",
-					"required": true,
-					"schema": {
-						"type": "object"
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "payload",
+						"description": "payload",
+						"required": true,
+						"schema": {
+							"type": "object"
+						}
 					}
-				}],
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -1001,34 +1263,42 @@
 				}
 			},
 			"delete": {
-				"tags": ["quarantine-policy-templates"],
+				"tags": [
+					"quarantine-policy-templates"
+				],
 				"summary": "delete",
 				"operationId": "deleteUsingDELETE_6",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"in": "body",
-					"name": "ids",
-					"description": "ids",
-					"required": true,
-					"schema": {
-						"type": "array",
-						"items": {
-							"type": "string"
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "ids",
+						"description": "ids",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
 						}
 					}
-				}],
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -1038,30 +1308,40 @@
 		},
 		"/public/api/v1/{tenant}/policy/quarantine-templates/{id}": {
 			"put": {
-				"tags": ["quarantine-policy-templates"],
+				"tags": [
+					"quarantine-policy-templates"
+				],
 				"summary": "update",
 				"operationId": "updateUsingPUT_6",
-				"consumes": ["application/json"],
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "id",
-					"in": "path",
-					"description": "id",
-					"required": true,
-					"type": "string"
-				}],
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "id",
+						"in": "path",
+						"description": "id",
+						"required": true,
+						"type": "string"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -1071,30 +1351,38 @@
 		},
 		"/public/api/v1/{tenant}/policy/security-templates": {
 			"get": {
-				"tags": ["security-policy-templates"],
+				"tags": [
+					"security-policy-templates"
+				],
 				"summary": "list",
 				"operationId": "listUsingGET_7",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "limit",
-					"in": "query",
-					"description": "limit",
-					"required": false,
-					"type": "integer",
-					"format": "int64"
-				}],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "limit",
+						"required": false,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -1102,32 +1390,42 @@
 				}
 			},
 			"post": {
-				"tags": ["security-policy-templates"],
+				"tags": [
+					"security-policy-templates"
+				],
 				"summary": "create",
 				"operationId": "createUsingPOST_7",
-				"consumes": ["application/json"],
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"in": "body",
-					"name": "payload",
-					"description": "payload",
-					"required": true,
-					"schema": {
-						"type": "object"
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "payload",
+						"description": "payload",
+						"required": true,
+						"schema": {
+							"type": "object"
+						}
 					}
-				}],
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -1135,34 +1433,42 @@
 				}
 			},
 			"delete": {
-				"tags": ["security-policy-templates"],
+				"tags": [
+					"security-policy-templates"
+				],
 				"summary": "delete",
 				"operationId": "deleteUsingDELETE_7",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"in": "body",
-					"name": "ids",
-					"description": "ids",
-					"required": true,
-					"schema": {
-						"type": "array",
-						"items": {
-							"type": "string"
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "ids",
+						"description": "ids",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
 						}
 					}
-				}],
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -1172,30 +1478,40 @@
 		},
 		"/public/api/v1/{tenant}/policy/security-templates/{id}": {
 			"put": {
-				"tags": ["security-policy-templates"],
+				"tags": [
+					"security-policy-templates"
+				],
 				"summary": "update",
 				"operationId": "updateUsingPUT_7",
-				"consumes": ["application/json"],
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "id",
-					"in": "path",
-					"description": "id",
-					"required": true,
-					"type": "string"
-				}],
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "id",
+						"in": "path",
+						"description": "id",
+						"required": true,
+						"type": "string"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -1205,30 +1521,38 @@
 		},
 		"/public/api/v1/{tenant}/policy/workload-groups": {
 			"get": {
-				"tags": ["workload-groups"],
+				"tags": [
+					"workload-groups"
+				],
 				"summary": "list",
 				"operationId": "listUsingGET_8",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "limit",
-					"in": "query",
-					"description": "limit",
-					"required": false,
-					"type": "integer",
-					"format": "int64"
-				}],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "limit",
+						"required": false,
+						"type": "integer",
+						"format": "int64"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK",
@@ -1239,32 +1563,42 @@
 				}
 			},
 			"post": {
-				"tags": ["workload-groups"],
+				"tags": [
+					"workload-groups"
+				],
 				"summary": "create",
 				"operationId": "createUsingPOST_8",
-				"consumes": ["application/json"],
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"in": "body",
-					"name": "payload",
-					"description": "payload",
-					"required": true,
-					"schema": {
-						"type": "object"
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "payload",
+						"description": "payload",
+						"required": true,
+						"schema": {
+							"type": "object"
+						}
 					}
-				}],
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -1272,34 +1606,42 @@
 				}
 			},
 			"delete": {
-				"tags": ["workload-groups"],
+				"tags": [
+					"workload-groups"
+				],
 				"summary": "delete",
 				"operationId": "deleteUsingDELETE_8",
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"in": "body",
-					"name": "ids",
-					"description": "ids",
-					"required": true,
-					"schema": {
-						"type": "array",
-						"items": {
-							"type": "string"
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"in": "body",
+						"name": "ids",
+						"description": "ids",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
 						}
 					}
-				}],
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
@@ -1309,30 +1651,40 @@
 		},
 		"/public/api/v1/{tenant}/policy/workload-groups/{id}": {
 			"put": {
-				"tags": ["workload-groups"],
+				"tags": [
+					"workload-groups"
+				],
 				"summary": "update",
 				"operationId": "updateUsingPUT_8",
-				"consumes": ["application/json"],
-				"produces": ["*/*"],
-				"parameters": [{
-					"name": "tenant",
-					"in": "path",
-					"description": "tenant",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "x-api-token",
-					"in": "header",
-					"description": "x-api-token",
-					"required": true,
-					"type": "string"
-				}, {
-					"name": "id",
-					"in": "path",
-					"description": "id",
-					"required": true,
-					"type": "string"
-				}],
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"*/*"
+				],
+				"parameters": [
+					{
+						"name": "tenant",
+						"in": "path",
+						"description": "tenant",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "x-api-token",
+						"in": "header",
+						"description": "x-api-token",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "id",
+						"in": "path",
+						"description": "id",
+						"required": true,
+						"type": "string"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK"
