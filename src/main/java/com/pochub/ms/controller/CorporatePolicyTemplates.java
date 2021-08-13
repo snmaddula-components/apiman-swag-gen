@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/public/api/v1/{tenant}/policy/corporate-templates")
-@Api(tags = "Corporate Policy Templates", value = "Corporate Policy Templates")
+@Api(tags = "Corporate Policy Templates", value = "Corporate Policy Templates", description = " ")
 public class CorporatePolicyTemplates {
 
 	@GetMapping

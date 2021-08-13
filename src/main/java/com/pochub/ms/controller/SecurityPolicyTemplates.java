@@ -19,31 +19,35 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/public/api/v1/{tenant}/policy/security-templates")
-@Api(tags = "Security Policy Templates", value = "Security Policy Templates")
+@Api(tags = "Security Policy Templates", value = "Security Policy Templates", description = " ")
 public class SecurityPolicyTemplates {
-	
+
 	@GetMapping
 	@ApiOperation("List all Security Policy Templates")
-	public void list(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken, @RequestParam(defaultValue = "2") Long limit) {
-		
+	public void list(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
+			@RequestParam(defaultValue = "2") Long limit) {
+
 	}
-	
+
 	@PostMapping
 	@ApiOperation("Create Security Policy Template")
-	public GenericPolicyResponse create(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken, @RequestBody Object payload) {
+	public GenericPolicyResponse create(@PathVariable String tenant,
+			@RequestHeader("x-api-token") String apiClientToken, @RequestBody Object payload) {
 		return new GenericPolicyResponse();
 	}
-	
+
 	@PutMapping("{id}")
 	@ApiOperation("Update Security Policy Template")
-	public GenericPolicyResponse update(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken, @PathVariable String id) {
+	public GenericPolicyResponse update(@PathVariable String tenant,
+			@RequestHeader("x-api-token") String apiClientToken, @PathVariable String id) {
 		return new GenericPolicyResponse();
 	}
-	
+
 	@DeleteMapping
 	@ApiOperation("Delete Security Policy Templates by Ids")
-	public GenericPolicyResponse delete(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken, @RequestBody DeleteByIdsRequest payload) {
+	public GenericPolicyResponse delete(@PathVariable String tenant,
+			@RequestHeader("x-api-token") String apiClientToken, @RequestBody DeleteByIdsRequest payload) {
 		return new GenericPolicyResponse();
 	}
-	
+
 }

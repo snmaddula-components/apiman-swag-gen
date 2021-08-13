@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/public/api/v1/{tenant}/policy/quarantine-templates")
-@Api(tags = "Quarantine Policy Templates", value = "Quarantine Policy Templates")
+@Api(tags = "Quarantine Policy Templates", value = "Quarantine Policy Templates", description = " ")
 public class QuarantinePolicyTemplates {
 	
 	@GetMapping
