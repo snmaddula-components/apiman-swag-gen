@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @Api(tags = "Audit Logs", value = "Audit Logs", description = " ")
-@RequestMapping("/public/api/v1/{tenant}/audit")
+@RequestMapping("/{tenant}/audit")
 public class Audit {
 	
 	@GetMapping("/events")

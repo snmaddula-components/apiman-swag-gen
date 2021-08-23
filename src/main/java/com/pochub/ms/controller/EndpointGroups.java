@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pochub.ms.dto.DeleteByIdsRequest;
+import com.pochub.ms.dto.policy.groups.EndpointGroupCreateUpdateRequest;
 import com.pochub.ms.dto.policy.groups.EndpointGroupListResponse;
 import com.pochub.ms.dto.policy.templates.GenericPolicyResponse;
 
@@ -20,7 +21,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @Api(tags = "Endpoint Groups", value = "Endpoint Groups", description = " ")
-@RequestMapping("/public/api/v1/{tenant}/policy/endpoint-groups")
+@RequestMapping("/{tenant}/policy/endpoint-groups")
 public class EndpointGroups {
 
 	@GetMapping
@@ -32,22 +33,24 @@ public class EndpointGroups {
 
 	@PostMapping
 	@ApiOperation("Create Endpoint Group")
-	public void create(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
-			@RequestBody Object payload) {
-
+	public GenericPolicyResponse create(@PathVariable String tenant,
+			@RequestHeader("x-api-token") String apiClientToken,
+			@RequestBody EndpointGroupCreateUpdateRequest payload) {
+		return new GenericPolicyResponse();
 	}
 
 	@PutMapping("{id}")
 	@ApiOperation("Update Endpoint Group")
-	public void update(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
-			@PathVariable String id) {
-
+	public GenericPolicyResponse update(@PathVariable String tenant,
+			@RequestHeader("x-api-token") String apiClientToken, @PathVariable String id,
+			@RequestBody EndpointGroupCreateUpdateRequest payload) {
+		return new GenericPolicyResponse();
 	}
 
 	@DeleteMapping
 	@ApiOperation("Update Endpoint Group")
-	public GenericPolicyResponse delete(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
-			@RequestBody DeleteByIdsRequest payload) {
+	public GenericPolicyResponse delete(@PathVariable String tenant,
+			@RequestHeader("x-api-token") String apiClientToken, @RequestBody DeleteByIdsRequest payload) {
 		return new GenericPolicyResponse();
 	}
 

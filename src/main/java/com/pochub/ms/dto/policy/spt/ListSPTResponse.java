@@ -1,4 +1,4 @@
-package com.pochub.ms.dto.policy.cpt;
+package com.pochub.ms.dto.policy.spt;
 
 import java.util.List;
 
@@ -8,9 +8,9 @@ import com.pochub.ms.dto.Status;
 import lombok.Data;
 
 @Data
-public class ListCPTResponse {
+public class ListSPTResponse {
 	public Status status;
 	public Pagination pagination;
-	public List<CPT> data;
+	public List<SPT> data;
 	public int statusCode;
 }

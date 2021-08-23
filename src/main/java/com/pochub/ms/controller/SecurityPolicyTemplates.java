@@ -12,34 +12,36 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pochub.ms.dto.DeleteByIdsRequest;
+import com.pochub.ms.dto.policy.spt.ListSPTResponse;
+import com.pochub.ms.dto.policy.spt.SPTCreateUpdateRequest;
 import com.pochub.ms.dto.policy.templates.GenericPolicyResponse;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/public/api/v1/{tenant}/policy/security-templates")
+@RequestMapping("/{tenant}/policy/security-templates")
 @Api(tags = "Security Policy Templates", value = "Security Policy Templates", description = " ")
 public class SecurityPolicyTemplates {
 
 	@GetMapping
 	@ApiOperation("List all Security Policy Templates")
-	public void list(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
+	public ListSPTResponse list(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
 			@RequestParam(defaultValue = "2") Long limit) {
-
+		return new ListSPTResponse();
 	}
 
 	@PostMapping
 	@ApiOperation("Create Security Policy Template")
 	public GenericPolicyResponse create(@PathVariable String tenant,
-			@RequestHeader("x-api-token") String apiClientToken, @RequestBody Object payload) {
+			@RequestHeader("x-api-token") String apiClientToken, @RequestBody SPTCreateUpdateRequest payload) {
 		return new GenericPolicyResponse();
 	}
 
 	@PutMapping("{id}")
 	@ApiOperation("Update Security Policy Template")
 	public GenericPolicyResponse update(@PathVariable String tenant,
-			@RequestHeader("x-api-token") String apiClientToken, @PathVariable String id) {
+			@RequestHeader("x-api-token") String apiClientToken, @PathVariable String id, @RequestBody SPTCreateUpdateRequest payload) {
 		return new GenericPolicyResponse();
 	}
 

@@ -19,7 +19,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/public/api/v1/{tenant}/policy/access-params")
+@RequestMapping("/{tenant}/policy/access-params")
 @Api(tags = "Access Parameters", value = "Access Parameters", description = " ")
 public class AccessParams {
 

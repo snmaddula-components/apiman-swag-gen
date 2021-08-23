@@ -20,26 +20,26 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/public/api/v1/{tenant}/policy/corporate-templates")
+@RequestMapping("/{tenant}/policy/corporate-templates")
 @Api(tags = "Corporate Policy Templates", value = "Corporate Policy Templates", description = " ")
 public class CorporatePolicyTemplates {
 
 	@GetMapping
-	@ApiOperation("List all Quarantine Policy Templates")
+	@ApiOperation("List all Corporate Policy Templates")
 	public ListCPTResponse list(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
 			@RequestParam(required = false) Long limit) {
 		return new ListCPTResponse();
 	}
 
 	@PostMapping
-	@ApiOperation("Create Quarantine Policy Template")
+	@ApiOperation("Create Corporate Policy Template")
 	public GenericPolicyResponse create(@PathVariable String tenant,
 			@RequestHeader("x-api-token") String apiClientToken, @RequestBody CPTCreateUpdateRequest payload) {
 		return new GenericPolicyResponse();
 	}
 
 	@PutMapping("{id}")
-	@ApiOperation("Update Quarantine Policy Template")
+	@ApiOperation("Update Corporate Policy Template")
 	public GenericPolicyResponse update(@PathVariable String tenant,
 			@RequestHeader("x-api-token") String apiClientToken, @PathVariable String id,
 			@RequestBody CPTCreateUpdateRequest payload) {

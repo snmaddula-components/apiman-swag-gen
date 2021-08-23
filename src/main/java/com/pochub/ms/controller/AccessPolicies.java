@@ -12,35 +12,38 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pochub.ms.dto.DeleteByIdsRequest;
+import com.pochub.ms.dto.policy.accesspolicies.AccessPoliciesListResponse;
+import com.pochub.ms.dto.policy.accesspolicies.CreateUpdateAccessPolicy;
 import com.pochub.ms.dto.policy.templates.GenericPolicyResponse;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/public/api/v1/{tenant}/policy/access-policies")
+@RequestMapping("/{tenant}/policy/access-policies")
 @Api(tags = "Access Policies", value = "Access Policies", description = " ")
 public class AccessPolicies {
 
 	@GetMapping
 	@ApiOperation("List all Access Policies")
-	public void list(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
-			@RequestParam(defaultValue = "2") Long limit) {
-
+	public AccessPoliciesListResponse list(@PathVariable String tenant,
+			@RequestHeader("x-api-token") String apiClientToken, @RequestParam(defaultValue = "2") Long limit) {
+		return new AccessPoliciesListResponse();
 	}
 
 	@PostMapping
 	@ApiOperation("Create Access Policy")
-	public void create(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
-			@RequestBody Object payload) {
-
+	public GenericPolicyResponse create(@PathVariable String tenant,
+			@RequestHeader("x-api-token") String apiClientToken, @RequestBody CreateUpdateAccessPolicy payload) {
+		return new GenericPolicyResponse();
 	}
 
 	@PutMapping("{id}")
 	@ApiOperation("Update Access Policy")
-	public void update(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
-			@PathVariable String id) {
-
+	public GenericPolicyResponse update(@PathVariable String tenant,
+			@RequestHeader("x-api-token") String apiClientToken, @PathVariable String id,
+			@RequestBody CreateUpdateAccessPolicy payload) {
+		return new GenericPolicyResponse();
 	}
 
 	@DeleteMapping

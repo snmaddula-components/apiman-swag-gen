@@ -1,13 +1,16 @@
-package com.pochub.ms.dto.policy.qpt;
+package com.pochub.ms.dto.policy.spt;
 
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.pochub.ms.dto.policy.qpt.Domain;
+import com.pochub.ms.dto.policy.qpt.Inbound;
+import com.pochub.ms.dto.policy.qpt.Outbound;
 
 import lombok.Data;
 
 @Data
-public class QPTCreateUpdateRequest {
+public class SPTCreateUpdateRequest {
 	public String name;
 	public String description;
 	@JsonProperty("Inbound")

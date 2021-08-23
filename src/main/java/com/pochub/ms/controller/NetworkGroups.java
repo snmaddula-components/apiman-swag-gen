@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pochub.ms.dto.DeleteByIdsRequest;
+import com.pochub.ms.dto.policy.groups.NetworkGroupCreateUpdateRequest;
 import com.pochub.ms.dto.policy.groups.NetworkGroupListResponse;
 import com.pochub.ms.dto.policy.templates.GenericPolicyResponse;
 
@@ -20,7 +21,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @Api(tags = "Network Groups", value = "Network Groups", description = " ")
-@RequestMapping("/public/api/v1/{tenant}/policy/network-groups")
+@RequestMapping("/{tenant}/policy/network-groups")
 public class NetworkGroups {
 
 	@GetMapping
@@ -32,16 +33,16 @@ public class NetworkGroups {
 
 	@PostMapping
 	@ApiOperation("Create Network Group")
-	public void create(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
-			@RequestBody Object payload) {
-
+	public GenericPolicyResponse create(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
+			@RequestBody NetworkGroupCreateUpdateRequest payload) {
+		return new GenericPolicyResponse();
 	}
 
 	@PutMapping("{id}")
 	@ApiOperation("Update Network Group")
-	public void update(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
-			@PathVariable String id) {
-
+	public GenericPolicyResponse update(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
+			@PathVariable String id, @RequestBody NetworkGroupCreateUpdateRequest payload) {
+		return new GenericPolicyResponse();
 	}
 
 	@DeleteMapping

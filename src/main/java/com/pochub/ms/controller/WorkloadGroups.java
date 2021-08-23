@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pochub.ms.dto.DeleteByIdsRequest;
+import com.pochub.ms.dto.policy.groups.WorkloadGroupCreateUpdateRequest;
 import com.pochub.ms.dto.policy.groups.WorkloadGroupListResponse;
 import com.pochub.ms.dto.policy.templates.GenericPolicyResponse;
 
@@ -20,7 +21,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @Api(tags = "Workload Groups", value = "Workload Groups", description = " ")
-@RequestMapping("/public/api/v1/{tenant}/policy/workload-groups")
+@RequestMapping("/{tenant}/policy/workload-groups")
 public class WorkloadGroups {
 
 	@GetMapping
@@ -32,22 +33,24 @@ public class WorkloadGroups {
 
 	@PostMapping
 	@ApiOperation("Create Workload Group")
-	public void create(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
-			@RequestBody Object payload) {
-
+	public GenericPolicyResponse create(@PathVariable String tenant,
+			@RequestHeader("x-api-token") String apiClientToken,
+			@RequestBody WorkloadGroupCreateUpdateRequest payload) {
+		return new GenericPolicyResponse();
 	}
 
 	@PutMapping("{id}")
 	@ApiOperation("Update Workload Group")
-	public void update(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
-			@PathVariable String id) {
-
+	public GenericPolicyResponse update(@PathVariable String tenant,
+			@RequestHeader("x-api-token") String apiClientToken, @PathVariable String id,
+			@RequestBody WorkloadGroupCreateUpdateRequest payload) {
+		return new GenericPolicyResponse();
 	}
 
 	@DeleteMapping
 	@ApiOperation("Delete Workload Groups by Ids")
-	public GenericPolicyResponse delete(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
-			@RequestBody DeleteByIdsRequest payload) {
+	public GenericPolicyResponse delete(@PathVariable String tenant,
+			@RequestHeader("x-api-token") String apiClientToken, @RequestBody DeleteByIdsRequest payload) {
 		return new GenericPolicyResponse();
 	}
 

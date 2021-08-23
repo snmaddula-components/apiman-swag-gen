@@ -5,7 +5,7 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class AccessParams {
+public class AccessParam {
 	public String description;
 	public boolean readonly;
 	public List<PortPolicy> portPolicy;
@@ -14,4 +14,5 @@ public class AccessParams {
 	public String _id;
 	public String id;
 	public String name;
+	public String status;
 }
