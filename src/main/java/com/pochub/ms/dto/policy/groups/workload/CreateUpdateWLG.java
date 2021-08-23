@@ -2,6 +2,7 @@ package com.pochub.ms.dto.policy.groups.workload;
 
 import java.util.List;
 
+import com.pochub.ms.dto.policy.groups.Filter;
 import com.pochub.ms.dto.policy.groups.StateDir;
 
 import lombok.Data;

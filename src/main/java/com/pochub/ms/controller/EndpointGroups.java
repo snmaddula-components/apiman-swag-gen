@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pochub.ms.dto.DeleteByIdsRequest;
-import com.pochub.ms.dto.policy.groups.EndpointGroupCreateUpdateRequest;
-import com.pochub.ms.dto.policy.groups.EndpointGroupListResponse;
+import com.pochub.ms.dto.policy.groups.endpoint.CreateUpdateEG;
+import com.pochub.ms.dto.policy.groups.endpoint.ListEGResponse;
 import com.pochub.ms.dto.policy.templates.GenericPolicyResponse;
 
 import io.swagger.annotations.Api;
@@ -26,16 +26,15 @@ public class EndpointGroups {
 
 	@GetMapping
 	@ApiOperation("List all Endpoint Groups")
-	public EndpointGroupListResponse list(@PathVariable String tenant,
-			@RequestHeader("x-api-token") String apiClientToken, @RequestParam(required = false) Long limit) {
-		return new EndpointGroupListResponse();
+	public ListEGResponse list(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
+			@RequestParam(required = false) Long limit) {
+		return new ListEGResponse();
 	}
 
 	@PostMapping
 	@ApiOperation("Create Endpoint Group")
 	public GenericPolicyResponse create(@PathVariable String tenant,
-			@RequestHeader("x-api-token") String apiClientToken,
-			@RequestBody EndpointGroupCreateUpdateRequest payload) {
+			@RequestHeader("x-api-token") String apiClientToken, @RequestBody CreateUpdateEG payload) {
 		return new GenericPolicyResponse();
 	}
 
@@ -43,7 +42,7 @@ public class EndpointGroups {
 	@ApiOperation("Update Endpoint Group")
 	public GenericPolicyResponse update(@PathVariable String tenant,
 			@RequestHeader("x-api-token") String apiClientToken, @PathVariable String id,
-			@RequestBody EndpointGroupCreateUpdateRequest payload) {
+			@RequestBody CreateUpdateEG payload) {
 		return new GenericPolicyResponse();
 	}
 
