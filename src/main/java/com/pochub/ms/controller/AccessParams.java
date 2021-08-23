@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pochub.ms.dto.DeleteByIdsRequest;
 import com.pochub.ms.dto.policy.accessparams.AccessParamsListResponse;
+import com.pochub.ms.dto.policy.accessparams.CreateUpdateAccessParams;
 import com.pochub.ms.dto.policy.templates.GenericPolicyResponse;
 
 import io.swagger.annotations.Api;
@@ -32,16 +33,16 @@ public class AccessParams {
 
 	@PostMapping
 	@ApiOperation("Create Access Parameter")
-	public void create(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
-			@RequestBody Object payload) {
-
+	public GenericPolicyResponse create(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
+			@RequestBody CreateUpdateAccessParams payload) {
+		return new GenericPolicyResponse();
 	}
 
 	@PutMapping("{id}")
 	@ApiOperation("Update Access Parameter")
-	public void update(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
-			@PathVariable String id) {
-
+	public GenericPolicyResponse update(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
+			@PathVariable String id, @RequestBody CreateUpdateAccessParams payload) {
+		return new GenericPolicyResponse();
 	}
 
 	@DeleteMapping

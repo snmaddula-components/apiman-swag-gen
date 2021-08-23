@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pochub.ms.dto.DeleteByIdsRequest;
-import com.pochub.ms.dto.policy.groups.WorkloadGroupCreateUpdateRequest;
-import com.pochub.ms.dto.policy.groups.WorkloadGroupListResponse;
+import com.pochub.ms.dto.policy.groups.workload.CreateUpdateWLG;
+import com.pochub.ms.dto.policy.groups.workload.ListWLGResponse;
 import com.pochub.ms.dto.policy.templates.GenericPolicyResponse;
 
 import io.swagger.annotations.Api;
@@ -26,16 +26,16 @@ public class WorkloadGroups {
 
 	@GetMapping
 	@ApiOperation("List all Workload Groups")
-	public WorkloadGroupListResponse list(@PathVariable String tenant,
+	public ListWLGResponse list(@PathVariable String tenant,
 			@RequestHeader("x-api-token") String apiClientToken, @RequestParam(defaultValue = "2") Long limit) {
-		return new WorkloadGroupListResponse();
+		return new ListWLGResponse();
 	}
 
 	@PostMapping
 	@ApiOperation("Create Workload Group")
 	public GenericPolicyResponse create(@PathVariable String tenant,
 			@RequestHeader("x-api-token") String apiClientToken,
-			@RequestBody WorkloadGroupCreateUpdateRequest payload) {
+			@RequestBody CreateUpdateWLG payload) {
 		return new GenericPolicyResponse();
 	}
 
@@ -43,7 +43,7 @@ public class WorkloadGroups {
 	@ApiOperation("Update Workload Group")
 	public GenericPolicyResponse update(@PathVariable String tenant,
 			@RequestHeader("x-api-token") String apiClientToken, @PathVariable String id,
-			@RequestBody WorkloadGroupCreateUpdateRequest payload) {
+			@RequestBody CreateUpdateWLG payload) {
 		return new GenericPolicyResponse();
 	}
 
