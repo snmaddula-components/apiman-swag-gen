@@ -11,6 +11,6 @@ import lombok.Data;
 public class ListSPTResponse {
 	public Status status;
 	public Pagination pagination;
-	public List<SPT> data;
+	public List<ListSPTItem> data;
 	public int statusCode;
 }

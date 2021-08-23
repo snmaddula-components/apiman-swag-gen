@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pochub.ms.dto.DeleteByIdsRequest;
-import com.pochub.ms.dto.policy.groups.DomainGroupCreateUpdateRequest;
-import com.pochub.ms.dto.policy.groups.DomainGroupListResponse;
+import com.pochub.ms.dto.policy.groups.domain.CreateUpdateDG;
+import com.pochub.ms.dto.policy.groups.domain.ListDGResponse;
 import com.pochub.ms.dto.policy.templates.GenericPolicyResponse;
 
 import io.swagger.annotations.Api;
@@ -26,22 +26,23 @@ public class DomainGroups {
 
 	@GetMapping
 	@ApiOperation("List all Domain Groups")
-	public DomainGroupListResponse list(@PathVariable String tenant,
-			@RequestHeader("x-api-token") String apiClientToken, @RequestParam(defaultValue = "2") Long limit) {
-		return new DomainGroupListResponse();
+	public ListDGResponse list(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
+			@RequestParam(defaultValue = "2") Long limit) {
+		return new ListDGResponse();
 	}
 
 	@PostMapping
 	@ApiOperation("Create Domain Group")
-	public GenericPolicyResponse create(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
-			@RequestBody DomainGroupCreateUpdateRequest payload) {
+	public GenericPolicyResponse create(@PathVariable String tenant,
+			@RequestHeader("x-api-token") String apiClientToken, @RequestBody CreateUpdateDG payload) {
 		return new GenericPolicyResponse();
 	}
 
 	@PutMapping("{id}")
 	@ApiOperation("Update Domain Group")
-	public GenericPolicyResponse update(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
-			@PathVariable String id, @RequestBody DomainGroupCreateUpdateRequest payload) {
+	public GenericPolicyResponse update(@PathVariable String tenant,
+			@RequestHeader("x-api-token") String apiClientToken, @PathVariable String id,
+			@RequestBody CreateUpdateDG payload) {
 		return new GenericPolicyResponse();
 	}
 

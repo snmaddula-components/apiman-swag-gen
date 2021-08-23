@@ -1,5 +1,7 @@
 package com.pochub.ms.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pochub.ms.dto.DeleteByIdsRequest;
 import com.pochub.ms.dto.policy.spt.ListSPTResponse;
-import com.pochub.ms.dto.policy.spt.SPTCreateUpdateRequest;
+import com.pochub.ms.dto.policy.spt.UpdateSPT;
 import com.pochub.ms.dto.policy.templates.GenericPolicyResponse;
 
 import io.swagger.annotations.Api;
@@ -34,14 +36,14 @@ public class SecurityPolicyTemplates {
 	@PostMapping
 	@ApiOperation("Create Security Policy Template")
 	public GenericPolicyResponse create(@PathVariable String tenant,
-			@RequestHeader("x-api-token") String apiClientToken, @RequestBody SPTCreateUpdateRequest payload) {
+			@RequestHeader("x-api-token") String apiClientToken, @RequestBody List<UpdateSPT> payload) {
 		return new GenericPolicyResponse();
 	}
 
 	@PutMapping("{id}")
 	@ApiOperation("Update Security Policy Template")
 	public GenericPolicyResponse update(@PathVariable String tenant,
-			@RequestHeader("x-api-token") String apiClientToken, @PathVariable String id, @RequestBody SPTCreateUpdateRequest payload) {
+			@RequestHeader("x-api-token") String apiClientToken, @PathVariable String id, @RequestBody UpdateSPT payload) {
 		return new GenericPolicyResponse();
 	}
 
