@@ -17,18 +17,20 @@ import io.swagger.annotations.ApiOperation;
 @Api(tags = "Audit Logs", value = "Audit Logs", description = " ")
 @RequestMapping("/{tenant}/audit")
 public class Audit {
-	
+
 	@GetMapping("/events")
 	@ApiOperation("List Audit Events")
-	public AuditEventResponse listAuditEvents(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken, 
-			@RequestParam(required = false) Long from, @RequestParam(required = false) Long to, @RequestParam(required = false) Long limit)  {
+	public AuditEventResponse listAuditEvents(@PathVariable String tenant,
+			@RequestHeader("x-api-token") String apiClientToken, @RequestParam(required = false) Long from,
+			@RequestParam(required = false) Long to, @RequestParam(required = false) Long limit) {
 		return new AuditEventResponse();
 	}
-	
+
 	@GetMapping("/types")
 	@ApiOperation("List Audit Categories / Types")
-	public AuditCategoryResponse listAuditTypes(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken) {
+	public AuditCategoryResponse listAuditTypes(@PathVariable String tenant,
+			@RequestHeader("x-api-token") String apiClientToken) {
 		return new AuditCategoryResponse();
 	}
-	
+
 }

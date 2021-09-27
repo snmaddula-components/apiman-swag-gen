@@ -33,15 +33,16 @@ public class AccessParams {
 
 	@PostMapping
 	@ApiOperation("Create Access Parameter")
-	public GenericPolicyResponse create(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
-			@RequestBody CreateUpdateAccessParams payload) {
+	public GenericPolicyResponse create(@PathVariable String tenant,
+			@RequestHeader("x-api-token") String apiClientToken, @RequestBody CreateUpdateAccessParams payload) {
 		return new GenericPolicyResponse();
 	}
 
 	@PutMapping("{id}")
 	@ApiOperation("Update Access Parameter")
-	public GenericPolicyResponse update(@PathVariable String tenant, @RequestHeader("x-api-token") String apiClientToken,
-			@PathVariable String id, @RequestBody CreateUpdateAccessParams payload) {
+	public GenericPolicyResponse update(@PathVariable String tenant,
+			@RequestHeader("x-api-token") String apiClientToken, @PathVariable String id,
+			@RequestBody CreateUpdateAccessParams payload) {
 		return new GenericPolicyResponse();
 	}
 
